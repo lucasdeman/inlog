@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<style>
+#myContainer {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  background: yellow;
+}
+#myAnimation {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background-color: red;
+}
+</style>
+<body>
+
+<p id="knop">
+<button onclick="myMove()">start</button> 
+</p>
+<p id="lol"></p>
+
+<div id ="myContainer">
+<button onclick= "myFunction()" id ="myAnimation"></button>
+</div>
+
+<script>
+var x = 0;
+var y;
+var k = 0;
+var l = 0;
+var j;
+var punten = 0;
+var gestart = 0;
+function myFunction() {
+if (gestart == 1) {
+punten++;
+document.getElementById("lol").innerHTML = punten;
+}
+}
+function myMove() {
+  gestart = 1;
+  document.getElementById("knop").innerHTML = "";
+  var elem = document.getElementById("myAnimation");   
+  var pos = 0;
+  setTimeout(frame);
+  setInterval(snoep, 200);
+  function snoep() {
+  y = Math.floor(Math.random() * 10)-3;
+  }
+  setInterval(snoep2, 250);
+  function snoep2() {
+  j = Math.floor(Math.random() * 3);
+  l = Math.round(j);
+  }
+  function frame() {
+  setTimeout(frame, y)
+
+
+    if (pos == 350) {
+      x = 1;
+    }
+      if (pos == 0) {
+      x = 0;
+      }
+      if (l == 0) {
+      k = 0;
+      }
+      if (l == 1) {
+      k = 1;
+      }
+      if (l == 2) {
+      k = 2;
+      }
+      
+      if (x == 0) {
+      if (k == 0) {
+      pos++; 
+      elem.style.top = pos + 'px'; /*gaat naar beneden*/
+      elem.style.left = pos + 'px'; /*gaat naar rechts*/
+    }
+    if (k == 1) {
+    pos++;
+    elem.style.left = pos + 'px'; /*gaat naar rechts*/
+    }
+    if (k == 2) {
+    pos++;
+    elem.style.top = pos + 'px'; /*gaat naar beneden*/
+    }
+    }
+      if (x == 1) {
+      if (k == 0) {
+      pos--; 
+      elem.style.top = pos + 'px'; /*gaat naar links*/
+      elem.style.left = pos + 'px'; /*gaat naar boven*/
+      }
+      if (k == 1) {
+      pos--;
+      elem.style.top = pos + 'px'; /*gaat naar links*/
+      }
+      if (l == 2) {
+      pos--;
+      elem.style.left = pos + 'px'; /*gaat naar boven*/
+      }
+    }
+    
+  }
+}
+</script>
+
+</body>
+</html>
+
+
